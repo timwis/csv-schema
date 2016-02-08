@@ -1,0 +1,29 @@
+{
+  "name": "es6-bootstrap",
+  "version": "1.0.0",
+  "description": "Project bootstrap with es6 build tools",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --progress --colors",
+    "watch": "webpack -w",
+    "build": "webpack -p"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/timwis/es6-bootstrap.git"
+  },
+  "author": "timwis <tim@timwis.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/timwis/es6-bootstrap/issues"
+  },
+  "homepage": "https://github.com/timwis/es6-bootstrap#readme",
+  "dependencies": {
+    "babel-core": "^6.5.1",
+    "babel-loader": "^6.2.2",
+    "babel-preset-es2015": "^6.5.0",
+    "webpack": "^1.12.13",
+    "webpack-dev-server": "^1.14.1"
+  }
+}
