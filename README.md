@@ -1,5 +1,5 @@
-# es6 bootstrap
-Project bootstrap with es6 build tools. Includes babel, webpack, and npm scripts.
+# es6 boilerplate
+Front-end project boilerplate with es6 build tools. Includes babel, webpack, and npm scripts.
 
 ## Usage
 Use [index.js](src/index.js) as your entry point. From there you can write ES6 JavaScript

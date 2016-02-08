@@ -1,7 +1,7 @@
 {
-  "name": "es6-bootstrap",
+  "name": "es6-boilerplate",
   "version": "1.0.0",
-  "description": "Project bootstrap with es6 build tools. Includes babel, webpack, and npm scripts.",
+  "description": "Front-end project boilerplate with es6 build tools. Includes babel, webpack, and npm scripts.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/timwis/es6-bootstrap.git"
+    "url": "git+https://github.com/timwis/es6-boilerplate.git"
   },
   "author": "timwis <tim@timwis.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/timwis/es6-bootstrap/issues"
+    "url": "https://github.com/timwis/es6-boilerplate/issues"
   },
-  "homepage": "https://github.com/timwis/es6-bootstrap#readme",
+  "homepage": "https://github.com/timwis/es6-boilerplate#readme",
   "dependencies": {
     "babel-core": "^6.5.1",
     "babel-loader": "^6.2.2",
