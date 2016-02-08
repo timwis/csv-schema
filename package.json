@@ -1,7 +1,7 @@
 {
   "name": "es6-bootstrap",
   "version": "1.0.0",
-  "description": "Project bootstrap with es6 build tools",
+  "description": "Project bootstrap with es6 build tools. Includes babel, webpack, and npm scripts.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
