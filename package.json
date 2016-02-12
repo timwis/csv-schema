@@ -19,7 +19,7 @@
     "url": "https://github.com/timwis/es6-boilerplate/issues"
   },
   "homepage": "https://github.com/timwis/es6-boilerplate#readme",
-  "dependencies": {
+  "devDependencies": {
     "babel-core": "^6.5.1",
     "babel-loader": "^6.2.2",
     "babel-preset-es2015": "^6.5.0",
