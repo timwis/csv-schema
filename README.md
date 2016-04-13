@@ -1,8 +1,9 @@
-# es6 boilerplate
-Front-end project boilerplate with es6 build tools. Includes babel, webpack, and npm scripts.
+# react boilerplate
+Fork of [es6-boilerplate](https://github.com/timwis/es6-boilerplate)
+Front-end React project boilerplate with es6 build tools. Includes babel, react, webpack, and npm scripts.
 
 ## Usage
-Use [index.js](src/index.js) as your entry point. From there you can write ES6 JavaScript
+Use [index.jsx](src/index.jsx) as your entry point. From there you can write ES6 JavaScript with JSX
 and import other modules using `import Foo from './foo'` etc. It will be compiled to a 
 single ES5 file at `dist/bundle.js` using the commands below, which is then run by
 [index.html](index.html).
