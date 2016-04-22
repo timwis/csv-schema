@@ -1,13 +1,14 @@
 {
-  "name": "es6-boilerplate",
+  "name": "csv-schema",
   "version": "1.0.0",
-  "description": "Front-end project boilerplate with es6 build tools. Includes babel, webpack, and npm scripts.",
-  "main": "index.js",
+  "description": "Analyzes a CSV file and generates database table schema, all within the browser",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server -d --progress --colors",
     "watch": "webpack -w -d",
-    "build": "webpack -p"
+    "build": "NODE_ENV=production webpack -p",
+    "deploy": "npm run build && surge . csv-schema.surge.sh"
   },
   "repository": {
     "type": "git",
@@ -24,11 +25,18 @@
     "babel-loader": "^6.2.2",
     "babel-preset-es2015": "^6.5.0",
     "babel-preset-react": "^6.5.0",
+    "surge": "^0.17.7",
     "webpack": "^1.12.13",
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
+    "bootstrap": "^3.3.6",
+    "knex": "^0.10.0",
+    "lodash": "^4.11.1",
+    "nprogress": "^0.2.0",
+    "papaparse": "^4.1.2",
     "react": "^15.0.1",
-    "react-dom": "^15.0.1"
+    "react-dom": "^15.0.1",
+    "slug": "^0.9.1"
   }
 }

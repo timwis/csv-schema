@@ -1,19 +1,15 @@
-# react boilerplate
-Fork of [es6-boilerplate](https://github.com/timwis/es6-boilerplate)
-Front-end React project boilerplate with es6 build tools. Includes babel, react, webpack, and npm scripts.
+# File Schema Detector
+Analyzes a CSV file and generates database table schema, all within the browser
 
-## Usage
-Use [index.jsx](src/index.jsx) as your entry point. From there you can write ES6 JavaScript with JSX
-and import other modules using `import Foo from './foo'` etc. It will be compiled to a 
-single ES5 file at `dist/bundle.js` using the commands below, which is then run by
-[index.html](index.html).
+This application uses [PapaParse](http://papaparse.com/) to parse CSV files (including huge ones)
+within the browser. It analyzes each field to suggest the best database field type, max length,
+and whether or not there are any `null` values. From there, you can rename fields, ignore them,
+override field types/lengths, etc. and generate database table creation sql for MySQL, MariaDB,
+Postres, Oracle, or SQLite3.
 
 ## Development
-Clone this repository and use `npm install` to install dependencies.
+Install dependencies using `npm install`, then run a development server using `npm start`.
+To deploy the application use `npm run deploy`.
 
-Use `npm start` to run a live reload server at `localhost:8080/webpack-dev-server`
-and watch for/recompile on changes.
-
-Use `npm run watch` to _only_ watch for/recompile on changes (use your own web server)
-
-Use `npm run build` to compile a minified, production-ready build
+This application uses [PapaParse](http://papaparse.com/) for CSV parsing and
+[Knex.js](http://knexjs.org/) for SQL query building.

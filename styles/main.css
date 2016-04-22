@@ -1,0 +1,51 @@
+.schema-table {
+  table-layout: fixed;
+}
+
+.schema-table .machine-name {
+  min-width: 180px;
+}
+
+.schema-table .type {
+  width: 130px;
+}
+
+.schema-table .type select {
+  width: 80%;
+  display: inline-block;
+}
+
+.schema-table .length {
+  width: 75px;
+}
+
+.schema-table .nullable {
+  width: 35px;
+}
+
+.schema-table .sample {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.schema-table .sample code {
+  white-space: nowrap;
+}
+
+.schema-table tr.disabled td {
+  background-color: #dcdcdc;
+}
+.schema-table tr.disabled input,
+.schema-table tr.disabled select {
+  color: #dcdcdc;
+  font-style: italic;
+}
+.schema-table tr.disabled code {
+  background-color: inherit;
+  color: inherit;
+}
+
+.export-result {
+  font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+  font-size: 90%;
+}
