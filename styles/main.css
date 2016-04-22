@@ -1,3 +1,8 @@
+footer {
+  text-align: center;
+  padding-top: 25px;
+}
+
 .schema-table {
   table-layout: fixed;
 }
