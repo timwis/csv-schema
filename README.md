@@ -1,5 +1,7 @@
-# File Schema Detector
+# CSV Schema
 Analyzes a CSV file and generates database table schema, all within the browser
+
+[![screenshot of application](http://i.imgur.com/j6eccLf.png)](https://csv-schema.surge.sh)
 
 This application uses [PapaParse](http://papaparse.com/) to parse CSV files (including huge ones)
 within the browser. It analyzes each field to suggest the best database field type, max length,
