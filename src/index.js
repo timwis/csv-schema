@@ -12,14 +12,15 @@ import {detectType, determineWinner} from './util'
 
 const App = React.createClass({
   render: function () {
+    const isFileSet = this.state.file.name
     return (
       <div>
         <h1>CSV Schema</h1>
         <p>Analyzes a CSV file and generates database table schema, all within the browser</p>
         <FileInput onSendFile={this.onSendFile} />
-        <FileDetails file={this.state.file} rowCount={this.state.rowCount} />
-        <ExportMenu file={this.state.file} fields={this.state.fields} />
-        <SchemaTable fields={this.state.fields} onUserInput={this.onUserInput} />
+        {isFileSet ? <FileDetails file={this.state.file} rowCount={this.state.rowCount} /> : ''}
+        {isFileSet ? <ExportMenu file={this.state.file} fields={this.state.fields} /> : ''}
+        {isFileSet ? <SchemaTable fields={this.state.fields} onUserInput={this.onUserInput} /> : ''}
       </div>
     )
   },

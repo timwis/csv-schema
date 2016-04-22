@@ -31,8 +31,9 @@ export default React.createClass({
       </div>
     )
   },
-  setExportType: function (exportType) {
+  setExportType: function (exportType, event) {
     this.setState({exportType})
+    event.preventDefault()
   },
   exportSql: function (tableName, fields, client) {
     // Load a client-specific version of knex
