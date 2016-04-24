@@ -29,8 +29,8 @@ export default React.createClass({
           {this.props.fields.map((field, index) => {
             // Construct field type explanation hint
             const typeHints = []
-            for (let type in field.fieldTypes) {
-              typeHints.push(`${type} (${field.fieldTypes[type]})`)
+            for (let type in field.typesFound) {
+              typeHints.push(`${type} (${field.typesFound[type]})`)
             }
 
             // Construct onChange event handlers for each field
@@ -38,7 +38,7 @@ export default React.createClass({
             const onChange = {
               enabled: (e) => onChangeRow('enabled', e.target.checked),
               machineName: (e) => onChangeRow('machineName', e.target.value),
-              fieldType: (e) => onChangeRow('fieldType', e.target.value),
+              type: (e) => onChangeRow('type', e.target.value),
               maxLength: (e) => onChangeRow('maxLength', e.target.value),
               nullable: (e) => onChangeRow('nullable', e.target.checked)
             }
@@ -61,7 +61,7 @@ export default React.createClass({
                   <span className='hint--top' data-hint={typeHints.join(', ')}>
                     <i className='fa fa-question-circle'></i>
                   </span>
-                  <select defaultValue={field.fieldType} onChange={onChange.fieldType} className='form-control'>
+                  <select defaultValue={field.type} onChange={onChange.type} className='form-control'>
                     {this.fieldTypes.map((fieldType) => (
                       <option key={fieldType} value={fieldType}>{fieldType}</option>
                     ))}

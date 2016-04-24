@@ -42,12 +42,12 @@ export default React.createClass({
     const sql = knex.schema.createTable(tableName, function (table) {
       fields.forEach(function (field) {
         let column
-        if (field.fieldType === 'string') {
+        if (field.type === 'string') {
           column = table.string(field.machineName, field.maxLength)
-        } else if (table[field.fieldType] !== undefined) {
-          column = table[field.fieldType](field.machineName)
+        } else if (table[field.type] !== undefined) {
+          column = table[field.type](field.machineName)
         } else {
-          column = table.specificType(field.fieldType, field.machineName)
+          column = table.specificType(field.type, field.machineName)
         }
         if (field.nullable) column.nullable()
       })
