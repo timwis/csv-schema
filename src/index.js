@@ -7,7 +7,7 @@ import FileInput from './file-input'
 import SchemaTable from './schema-table'
 import FileDetails from './file-details'
 import ExportMenu from './export-menu'
-import {analyzeRow, finalize} from './analyze'
+import {analyzeRow, analyzeRowResults} from './analyze'
 
 const App = React.createClass({
   render: function () {
@@ -17,9 +17,9 @@ const App = React.createClass({
         <h1>CSV Schema</h1>
         <p>Analyzes a CSV file and generates database table schema, all within the browser</p>
         <FileInput onSendFile={this.onSendFile} />
-        {isFileSet ? <FileDetails file={this.state.file} rowCount={this.state.rowCount} /> : ''}
-        {isFileSet ? <ExportMenu file={this.state.file} fields={this.state.fields} /> : ''}
-        {isFileSet ? <SchemaTable fields={this.state.fields} onUserInput={this.onUserInput} /> : ''}
+        {isFileSet && <FileDetails file={this.state.file} rowCount={this.state.rowCount} />}
+        {isFileSet && <ExportMenu file={this.state.file} fields={this.state.fields} />}
+        {isFileSet && <SchemaTable fields={this.state.fields} onUserInput={this.onUserInput} />}
       </div>
     )
   },
@@ -53,7 +53,7 @@ const App = React.createClass({
         analyzeRow(fieldsHash, row.data[0])
       },
       complete: () => {
-        const fieldsArray = finalize(fieldsHash)
+        const fieldsArray = analyzeRowResults(fieldsHash)
 
         NProgress.done()
         const endTime = new Date().getTime()

@@ -44,7 +44,7 @@ export function detectType (sample) {
   }
 }
 
-export function finalize (fieldsHash) {
+export function analyzeRowResults (fieldsHash) {
   let fieldsArray = []
   for (let key in fieldsHash) {
     const field = fieldsHash[key]

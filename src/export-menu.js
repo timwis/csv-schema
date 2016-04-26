@@ -36,7 +36,6 @@ export default React.createClass({
     event.preventDefault()
   },
   exportSql: function (tableName, fields, client) {
-    // Load a client-specific version of knex
     const knex = Knex({ client: client })
 
     const sql = knex.schema.createTable(tableName, function (table) {
