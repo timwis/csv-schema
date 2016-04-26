@@ -21,7 +21,7 @@ export function analyzeRow (fieldsHash, row) {
   }
 }
 
-function detectType (sample) {
+export function detectType (sample) {
   if (sample === '') {
     return 'null'
   } else if (sample.includes('-') && moment(sample, 'YYYY-MM-DD', true).isValid()) {
@@ -72,7 +72,7 @@ export function finalize (fieldsHash) {
  *  - if detect an int, don't check for timestamp anymore, only check for float or string
  *  - maybe this optimization can come later...
  */
-function determineWinner (fieldTypes) {
+export function determineWinner (fieldTypes) {
   const keys = Object.keys(fieldTypes)
 
   if (keys.length === 1) {

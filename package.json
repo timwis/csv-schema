@@ -4,7 +4,8 @@
   "description": "Analyzes a CSV file and generates database table schema, all within the browser",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm run lint && babel-tape-runner test | tap-spec",
+    "lint": "standard src | snazzy",
     "start": "webpack-dev-server -d --progress --colors",
     "watch": "webpack -w -d",
     "build": "NODE_ENV=production webpack -p",
@@ -23,9 +24,14 @@
   "devDependencies": {
     "babel-core": "^6.5.1",
     "babel-loader": "^6.2.2",
+    "babel-polyfill": "^6.7.4",
     "babel-preset-es2015": "^6.5.0",
     "babel-preset-react": "^6.5.0",
+    "snazzy": "^3.0.1",
+    "standard": "^6.0.8",
     "surge": "^0.17.7",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.5.1",
     "webpack": "^1.12.13",
     "webpack-dev-server": "^1.14.1"
   },
