@@ -1,18 +1,21 @@
 import React from 'react'
 import {partial} from 'lodash'
 
-export default React.createClass({
-  fieldTypes: [
-    'string',
-    'text',
-    'boolean',
-    'integer',
-    'float',
-    'date',
-    'datetime',
-    'timestamp'
-  ],
-  render: function () {
+class SchemaTable extends React.Component {
+  get fieldTypes () {
+    return [
+      'string',
+      'text',
+      'boolean',
+      'integer',
+      'float',
+      'date',
+      'datetime',
+      'timestamp'
+    ]
+  }
+
+  render () {
     return (
       <table className='table table-striped schema-table'>
         <thead>
@@ -82,9 +85,12 @@ export default React.createClass({
         </tbody>
       </table>
     )
-  },
-  propTypes: {
-    fields: React.PropTypes.array,
-    onUserInput: React.PropTypes.func
   }
-})
+}
+
+SchemaTable.propTypes = {
+  fields: React.PropTypes.array,
+  onUserInput: React.PropTypes.func
+}
+
+export default SchemaTable
