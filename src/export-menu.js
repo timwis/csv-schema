@@ -50,7 +50,7 @@ class ExportMenu extends React.Component {
       float: 'number',
       text: 'string'
     }
-    return fields.map((field) => {
+    const jtsFields = fields.map((field) => {
       const fieldType = typeMap[field.type] || field.type
       const jtsField = {
         name: field.machineName,
@@ -62,8 +62,9 @@ class ExportMenu extends React.Component {
       if (fieldType === 'string') {
         jtsField.constraints.maxLength = field.maxLength
       }
-      return JSON.stringify(jtsField, null, 2)
+      return jtsField
     })
+    return JSON.stringify({fields: jtsFields}, null, 2)
   }
 
   exportSql (client, fields) {
