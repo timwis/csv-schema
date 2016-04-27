@@ -9,8 +9,19 @@ import FileDetails from './file-details'
 import ExportMenu from './export-menu'
 import {analyzeRow, analyzeRowResults} from './analyze'
 
-const App = React.createClass({
-  render: function () {
+class App extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      file: {},
+      fields: [],
+      rowCount: 0
+    }
+    this.onUserInput = this.onUserInput.bind(this)
+    this.onSendFile = this.onSendFile.bind(this)
+  }
+
+  render () {
     const isFileSet = this.state.file.name
     return (
       <div>
@@ -22,22 +33,17 @@ const App = React.createClass({
         {isFileSet && <SchemaTable fields={this.state.fields} onUserInput={this.onUserInput} />}
       </div>
     )
-  },
-  getInitialState: function () {
-    return {
-      file: {},
-      fields: [],
-      rowCount: 0
-    }
-  },
-  onUserInput: function (key, field, value) {
+  }
+
+  onUserInput (key, field, value) {
     const newFields = this.state.fields.slice()
     if (newFields[key]) newFields[key][field] = value
     this.setState({fields: newFields})
-  },
-  onSendFile: function (file) {
-    var fieldsHash = {}
-    var rowCount = 0
+  }
+
+  onSendFile (file) {
+    const fieldsHash = {}
+    let rowCount = 0
 
     this.setState({file})
 
@@ -63,6 +69,6 @@ const App = React.createClass({
       }
     })
   }
-})
+}
 
 if (document) ReactDOM.render(<App />, document.getElementById('main'))
