@@ -4,31 +4,36 @@ import Knex from 'knex'
 class ExportMenu extends React.Component {
   constructor (props) {
     super(props)
-    this.state = {exportType: 'mysql'}
+    this.state = {exportType: 'MySQL'}
   }
 
   get exportTypes () {
-    return [
-      {value: 'mysql', label: 'MySQL'},
-      {value: 'mariadb', label: 'MariaDB'},
-      {value: 'postgres', label: 'Postgres'},
-      {value: 'oracle', label: 'Oracle'},
-      {value: 'sqlite3', label: 'SQLite3'}
-    ]
+    return {
+      'MySQL': this.exportSql.bind(this, 'mysql'),
+      'MariaDB': this.exportSql.bind(this, 'mariadb'),
+      'Postgres': this.exportSql.bind(this, 'postgres'),
+      'Oracle': this.exportSql.bind(this, 'oracle'),
+      'SQLite3': this.exportSql.bind(this, 'sqlite3'),
+      'JSON Table Schema': this.exportJSONTableSchema.bind(this)
+    }
   }
 
   render () {
-    const tableName = this.props.file.name ? this.props.file.name.split('.')[0] : 'table_name'
     const enabledFields = this.props.fields.filter((field) => field.enabled)
-    const exportResult = this.exportSql(tableName, enabledFields, this.state.exportType)
+    const exportResult = this.exportTypes[this.state.exportType](enabledFields)
+    const tabs = []
+    for (let type in this.exportTypes) {
+      tabs.push((
+        <li key={type} className={this.state.exportType === type ? 'active' : ''}>
+          <a href='#' onClick={this.setExportType.bind(this, type)}>{type}</a>
+        </li>
+      ))
+    }
+
     return (
       <div>
         <ul className='nav nav-tabs'>
-          {this.exportTypes.map((type) => (
-            <li key={type.value} className={this.state.exportType === type.value ? 'active' : ''}>
-              <a href='#' onClick={this.setExportType.bind(this, type.value)}>{type.label}</a>
-            </li>
-          ))}
+          {tabs}
         </ul>
         <div className='well export-result'>{exportResult}</div>
       </div>
@@ -40,7 +45,30 @@ class ExportMenu extends React.Component {
     event.preventDefault()
   }
 
-  exportSql (tableName, fields, client) {
+  exportJSONTableSchema (fields) {
+    const typeMap = {
+      float: 'number',
+      text: 'string'
+    }
+    const jtsFields = fields.map((field) => {
+      const fieldType = typeMap[field.type] || field.type
+      const jtsField = {
+        name: field.machineName,
+        type: fieldType,
+        constraints: {
+          required: !field.nullable
+        }
+      }
+      if (fieldType === 'string') {
+        jtsField.constraints.maxLength = field.maxLength
+      }
+      return jtsField
+    })
+    return JSON.stringify({fields: jtsFields}, null, 2)
+  }
+
+  exportSql (client, fields) {
+    const tableName = this.props.file.name ? this.props.file.name.split('.')[0] : 'table_name'
     const knex = Knex({ client: client })
 
     const sql = knex.schema.createTable(tableName, function (table) {

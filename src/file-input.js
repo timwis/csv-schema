@@ -6,7 +6,7 @@ class FileInput extends React.Component {
       <div className='input-group'>
         <input type='file' ref='fileInput' accept='text/csv,application/csv,text/comma-separated-values,text/tsv,text/tab-separated-values' className='form-control' />
         <span className='input-group-btn'>
-          <button onClick={() => this.props.onSendFile(this.refs.fileInput.files[0] || null)} className='btn btn-primary'>Analyze</button>
+          <button onClick={() => this.props.onSendFile(this.refs.fileInput.files[0] || {})} className='btn btn-primary'>Analyze</button>
         </span>
       </div>
     )
